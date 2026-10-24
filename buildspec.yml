@@ -1,0 +1,22 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.12
+    commands:
+      - python --version
+      - python -m pip install --upgrade pip
+      - pip install -r requirements-dev.txt
+
+  build:
+    commands:
+      - pytest -q
+
+artifacts:
+  files:
+    - app.py
+    - requirements.txt
+    - appspec.yml
+    - deploy/**/*
+  discard-paths: no
