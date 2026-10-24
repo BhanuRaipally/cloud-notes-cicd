@@ -1,0 +1,34 @@
+version: 0.2
+
+env:
+  variables:
+    APP_VERSION: "pipeline-build"
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.12
+    commands:
+      - python --version
+      - pip install --upgrade pip
+      - pip install -r requirements-dev.txt
+
+  pre_build:
+    commands:
+      - echo "Starting automated tests"
+
+  build:
+    commands:
+      - pytest -q
+
+  post_build:
+    commands:
+      - echo "Tests passed. CodePipeline will pass this artifact to CodeDeploy."
+
+artifacts:
+  files:
+    - app.py
+    - requirements.txt
+    - appspec.yml
+    - scripts/**/*
+  discard-paths: no
