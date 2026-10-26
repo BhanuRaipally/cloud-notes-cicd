@@ -87,3 +87,5 @@ Do not attach AdministratorAccess for convenience, and do not put secrets in sou
 5. CodeDeploy deploys to EC2.
 6. Deliberate failing test blocks deployment; fix it and rerun successfully.
 7. Clean up all lab resources.
+
+GitHub Actions CI workflow verification.
